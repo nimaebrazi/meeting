@@ -1,0 +1,22 @@
+{
+    "name": "nimaebrazi/meeting",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Meeting\\": "src/"
+        },
+        "files": [
+            "src/Core/helpers.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "Nima Ebrazi",
+            "email": "nima.ebrazi@gmail.com"
+        }
+    ],
+    "require": {
+        "ext-pdo": "*"
+    }
+}
