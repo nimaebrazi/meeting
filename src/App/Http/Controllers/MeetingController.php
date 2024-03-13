@@ -49,6 +49,19 @@ class MeetingController
         ]);
     }
 
+
+    public function delete($id)
+    {
+        /** @var MeetingService $meetingService */
+        $meetingService = App::resolve('meetingService');
+        $meetingService->delete($id);
+
+        return view('meeting/index', [
+            'timing' => Util::getTiming(),
+            'weekDays' => Util::getWeekDays()
+        ]);
+    }
+
     private function validateOnSave($input)
     {
         if (Validator::isNull($input['start']) || Validator::isNull($input['end']) || Validator::isNull($input['date'])) {

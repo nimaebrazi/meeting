@@ -8,7 +8,8 @@ use Meeting\Core\Database;
 class MeetingRepository
 {
     public function __construct(private Database $database)
-    {}
+    {
+    }
 
     public function findForUser(int $userId, string $startDate, string $endData): array
     {
@@ -24,11 +25,11 @@ class MeetingRepository
         ]);
 
 
-        return $stmt->fetchAll(\PDO::FETCH_CLASS|\PDO::FETCH_PROPS_LATE, Meeting::class);
+        return $stmt->fetchAll(\PDO::FETCH_CLASS | \PDO::FETCH_PROPS_LATE, Meeting::class);
     }
 
 
-    function save(array $data)
+    public function save(array $data)
     {
         /** @var Database $db */
         $connection = $this->database->connection();
@@ -57,6 +58,12 @@ class MeetingRepository
             throw $e;
         }
 
+    }
+
+    public function delete(int $id)
+    {
+        $sql = 'DELETE FROM meetings WHERE id=?';
+        $this->database->connection()->prepare($sql)->execute([$id]);
     }
 
 }

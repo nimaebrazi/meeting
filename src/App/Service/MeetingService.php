@@ -25,4 +25,9 @@ class MeetingService
     {
         $this->meetingRepository->save($data);
     }
+
+    public function delete(int $id)
+    {
+        $this->meetingRepository->delete($id);
+    }
 }
